@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,200&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.nav {
+	position: sticky;
+	top: 0;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	background: rgb(255,163,210);
+	background: linear-gradient(90deg, rgba(255,163,210,1) 0%, rgba(210,247,255,1) 86%);
+}
+
+.nav__logo {
+	height: 50px;
+	width: 50px;
+	border: 5px solid #af4afe;
+	border-radius: 50%;
+	background-color: #9a2ee1;
+	transition: 400ms ease-in;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.nav__logo h1 {
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	color: #212;
+}
+
+.nav__logo:hover {
+	transform: scale(1.1, 1);
+	background-color: #af4afe;
+	border: 5px solid #9a2ee1;
+}
+
+.nav__menu {
+	width: 40%;
+}
+
+.nav__menu ul {
+	display: flex;
+	justify-content: space-around;
+}
+
+.nav__menu ul li {
+	list-style: none;
+}
+
+.nav__menu-list li a {
+	text-decoration: none;
+	color: #222;
+	transition: 500ms ease-in-out;
+}
+
+.nav__menu-list li a:hover {
+	color: #9e2aef;
+	border-bottom: 2px solid #9e2aef;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 2em;
+}
+
+.header {
+
+}
+
+.content {
+	height: 100vh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.form {
+	background-color: #ccc;
+	padding: 2rem;
+	border-radius: 5px;
+	box-shadow: 2px 5px 5px rgba(0,0,0, 0.5);
+}
+
+.error {
+	color: #e00;
+}
+
+.form h1 {
+	text-align: center;
+	font-weight: 350;
+	text-shadow: 2px 3px 3px rgba(0,0,0,0.4);
+	margin: 0;
+	padding: 0;
+}
+
+.form .form-group {
+	display: block;
+	margin: .7rem 0;
+}
+
+.form-group label {
+	display: block;
+	font-size: 18px;
+}
+
+.form-group input {
+	padding: .5rem;
+	outline: none;
+	border: none;
+	border-bottom: 3px solid #444;
+}
+
+.form-group input:focus {
+	border: 2px solid #0a0;	
+}
+
+.form button {
+	width: 100%;
+	background-color: #312eef;
+	padding: .5rem;
+	border-radius: 5px;
+	outline: none;
+	border: none;
+	color: #ddd;
+	margin-top: 10px;
+	transition: 350ms ease-in-out;
+}
+
+.form button:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+	background-color: #aa4ffa;
+}
+
+.infomation-product {
+	margin: 1rem;
+	transition: faded 1s ease-in;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 400;
+	width: 100%;
+}
+
+.head-list {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.head-list span {
+	width: 40%;
+	border: 1px solid #2323a2;
+	padding: .2rem;
+	font-weight: bold;
+}
+
+.content-list {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.content-list span {
+	width: 40%;
+	border: 1px solid #2323a2;
+	padding: .2rem;
+}
+
+.footer {
+	background-color: #222;
+	color: #ccc;
+	width: 100%;
+	text-align: center; 
+}
+
+@keyframes faded {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: .5;
+	}
+	100% {
+		opacity: 1;
+	}
+}

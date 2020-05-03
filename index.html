@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Parcel Sandbox</title>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="./style.css">
+	<script defer src="./index.js"></script>
+</head>
+
+<body>
+	<!-- Navbar -->
+	<nav class="nav">
+		<div class="nav__logo">
+			<h1>S</h1>
+		</div>
+		<div class="nav__menu">
+			<ul class="nav__menu-list">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<!-- main -->
+	<div class="container">
+		<!-- Content -->
+		<div class="content">
+			<div class="form-product">
+				<form class="form" id="form">
+				<h1>Product</h1>
+				<div class="error" id="error"></div>
+				<div class="form-group">
+					<label for="name-product">Name product:</label>
+					<input type="text" name="name" class="name" id="name" required>
+				</div>
+				<div class="form-group">
+					<label for="price">Price:</label>
+					<input type="number" name="price" class="price" id="price" required>
+				</div>
+				<div class="form-group">
+					<label for="id">Id product:</label>
+					<input type="" name="id" class="id" id="id" required>
+				</div>
+				<button type="submit" id="btn" class="btn">ADD PRODUCT</button>
+			</form>
+			</div>
+			<div class="infomation-product" id="infomation-product">
+				<div class="head-list">
+					<span class="head-list__id">ID</span>
+					<span class="head-list__name">Name product</span>
+					<span class="head-list__price">Price</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<footer class="footer">
+		<p>Copyright &copy; 2020</p>
+	</footer>
+</body>
+
+</html>
