@@ -7,10 +7,10 @@ const products = !localStorage.products ? [] : JSON.parse(localStorage.getItem('
 
 // running
 render();
-listProduct(products);
 
 // declarations function
 function render() {
+  listProduct(products);
   form.addEventListener('submit', handleSubmit.bind(this));
 }
 
@@ -79,22 +79,27 @@ function handleSubmit(e) {
   const price = priceProduct.value;
   const id = idProduct.value;
   
-  // check ID of product
-  if(!checkId(id)) {
-    alert('');
-
-    // add product into localStorage
-    products.push({ name, price, id });
-    addProduct(name, price, id);
-
-    localStorage.setItem('products', JSON.stringify(products));
-
-    // reset input value
-    document.querySelector('#name').value = '';
-    document.querySelector('#price').value = '';
-    document.querySelector('#id').value = '';
+  // check price is more than 0
+  if(price < 0) {
+    alert('Price must be the larger than 0!');
   } else {
-    alert('Id product is really exist!');
+    // check ID of product
+    if(!checkId(id)) {
+      alert('');
+
+      // add product into localStorage
+      products.push({ name, price, id });
+      addProduct(name, price, id);
+
+      localStorage.setItem('products', JSON.stringify(products));
+
+      // reset input value
+      document.querySelector('#name').value = '';
+      document.querySelector('#price').value = '';
+      document.querySelector('#id').value = '';
+    } else {
+      alert('Id product is really exist!');
+    }
   }
 }
 
@@ -115,10 +120,12 @@ function checkId(id) {
 }
 
 function alert(msg) {
-  const p = document.createElement('p');
-  p.textContent = msg;
+  // const p = document.createElement('p');
+  // p.textContent = msg;
+  error.innerHTML = `<p id="msg-error">${msg}</p>`;
 
-  error.appendChild(p);
-
-  setTimeout(() => p.remove(), 3000);
+  setTimeout(() => (
+    document
+      .querySelector('#msg-error') ? document.querySelector('#msg-error').remove():null
+  ), 3000);
 }
