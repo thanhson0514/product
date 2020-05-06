@@ -5,7 +5,6 @@ class Component {
 		this.idProduct = document.querySelector('#id');
 		this.form = document.querySelector('#form');
 		this.error = document.querySelector('#error');
-		this.noProducts = document.querySelector('.no-product');
 		this.products = !localStorage.products ? [] : JSON.parse(localStorage.getItem('products'));
 	}
 
@@ -13,7 +12,7 @@ class Component {
 		if(!this.products.length) {
     		this.noProduct();
   		} else {
-	     	this.noProducts ? document.querySelector('.no-product').remove(): null; 
+	     	document.querySelector('.no-product') ? document.querySelector('.no-product').remove(): null; 
 
 			this.products.forEach(product => {
 		      	const div = document.createElement('div');
@@ -100,7 +99,7 @@ class Component {
 	}
 
 	addProduct(name, price, id) {
-		this.noProducts ? document.querySelector('.no-product').remove(): null; 
+		document.querySelector('.no-product') ? document.querySelector('.no-product').remove(): null; 
 
 		const div = document.createElement('div');
 		const button = document.createElement('button');
