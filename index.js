@@ -3,30 +3,35 @@ const priceProduct = document.querySelector('#price');
 const idProduct = document.querySelector('#id');
 const form = document.querySelector('#form');
 const error = document.querySelector('#error');
-const products = !localStorage.products ? [] : JSON.parse(localStorage.getItem('products'));
+let products = !localStorage.products ? [] : JSON.parse(localStorage.getItem('products'));
 
 // running
 render();
 
 // declarations function
 function render() {
-  listProduct(products);
+  // render all products in localStorage
   form.addEventListener('submit', handleSubmit.bind(this));
+  listProducts(products);
+
+  const buttons = document.querySelectorAll('#remove-product');
+  buttons.forEach(button => {
+    button.addEventListener('click', removeProduct.bind(this));
+  })
 }
 
-function listProduct(products) {
+function listProducts(products) {
   if(!products.length) {
-    const noProduct = document.createElement('h1');
-    noProduct.textContent = 'No products';
-    noProduct.classList.add('no-product');
-
-    document.querySelector('#infomation-product').appendChild(noProduct);
+    noProduct();
   } else {
     document.querySelector('.no-product') ? document.querySelector('.no-product').remove(): null; 
 
     products.forEach(product => {
       const div = document.createElement('div');
+      const button = document.createElement('button');
       div.classList.add('content-list');
+      button.classList.add('remove-product');
+      button.setAttribute('id', 'remove-product');
 
       // create field id
       const spanId = document.createElement('span');
@@ -43,16 +48,45 @@ function listProduct(products) {
       spanPrice.textContent = `$${product.price}`;
       div.appendChild(spanPrice);
 
+       // add button into element div
+      button.textContent = 'X';
+      div.appendChild(button);
+
       document.querySelector('#infomation-product').appendChild(div);
     })
   }
+}
+
+function removeProduct(e) {
+    const removeId = e.target.parentNode.firstElementChild.textContent;
+    console.log(removeId);
+    products = products.filter(({ id }) => id !== removeId);
+    console.log(products);
+    localStorage.setItem('products', JSON.stringify(products));
+
+    e.target.parentNode.remove();
+    
+    if(!products.length) {
+      noProduct();
+    }
+}
+
+function noProduct() {
+  const noProduct = document.createElement('h1');
+  noProduct.textContent = 'No products';
+  noProduct.classList.add('no-product');
+
+  document.querySelector('#infomation-product').appendChild(noProduct);
 }
 
 function addProduct(name, price, id) {
   document.querySelector('.no-product') ? document.querySelector('.no-product').remove(): null; 
 
   const div = document.createElement('div');
+  const button = document.createElement('button');
   div.classList.add('content-list');
+  button.classList.add('remove-product');
+  button.setAttribute('id', 'remove-product');
 
   // create field id
   const spanId = document.createElement('span');
@@ -69,7 +103,16 @@ function addProduct(name, price, id) {
   spanPrice.textContent = `$${price}`;
   div.appendChild(spanPrice);
 
+ // add button into element div
+  button.textContent = 'X';
+  div.appendChild(button);
+
   document.querySelector('#infomation-product').appendChild(div);
+
+  const buttons = document.querySelectorAll('#remove-product');
+  buttons.forEach(button => {
+    button.addEventListener('click', removeProduct.bind(this));
+  })
 }
 
 function handleSubmit(e) {
@@ -102,7 +145,6 @@ function handleSubmit(e) {
     }
   }
 }
-
 
 function checkId(id) {
   const products = JSON.parse(localStorage.getItem('products'));

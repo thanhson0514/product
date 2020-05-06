@@ -176,6 +176,7 @@
 }
 
 .content-list {
+	position: relative;
 	display: flex;
 	width: 100%;
 	justify-content: space-between;
@@ -195,6 +196,26 @@
 	padding: 0;
 }
 
+.remove-product {
+	position: absolute;
+	padding: 0 1rem;
+	outline: none;
+	border: none;
+	right: 0;
+	top: 0;
+	background-color: #f22;
+	color: #fff;
+	height: 50%;
+	transform: translateY(50%);
+	transition: 400ms;
+	cursor: pointer;
+}
+
+.remove-product:hover {
+	background-color: #ddd;
+	border:1px solid #333;
+	color: #f22;
+}
 
 .footer {
 	background-color: #222;
